@@ -803,7 +803,41 @@ enum colors {RED, GREEN, PUCE};		//可以用typedef为类型起个名字
 enum colors favorite = PUCE;
 ```
 
-***so? 枚举好处？？？***
+***so? 枚举好处？？？*** 限制我能给的值？ 实例感受下： 
+
+```c
+typedef enum {
+    COUNT,
+    POUNDS,
+    PINTS
+}unit_of_measure;
+
+typedef struct {
+    const char *name;
+    const char *country;
+    quantity amount;
+    unit_of_measure units;
+}fruit_order;
+
+void display(fruit_order order) {
+    printf("This order contains ");
+    if (order.units==PINTS) printf("%2.2f pints of %s\n", order.amount.volume, order.name);
+
+    else if (order.units==POUNDS) printf("%2.2f lbs of %s\n", order.amount.weight, order.name);
+    else printf("%i %s\n", order.amount.count, order.name);
+}
+
+int main() {
+    fruit_order strawberries= {
+        "strawberries",
+        "Spain",
+        .amount.weight=17.6,
+        POUNDS
+    };
+    display(strawberries);
+    return 0;
+}
+```
 
 ### 位字段（bitfield）
 
@@ -824,3 +858,56 @@ typedef struct {
 如果你有一连串的位字段，计算机会放在一起，以节省空间，也就是说如果有8个1位的位字段，计算机就会把它们保存在一个字节中
 
 如果编译器发现结构中只有一个位字段，还是会把它填充成一个字，这就是为什么位字段总是组合在一起
+
+## 404 我们这里先暂停下
+
+介于后文的内容为进阶话题，到这里先暂停。
+
+接下来考虑学习十大遗漏知识点以及 11网络与套接字
+
+## 11 网络与套接字
+
+## 十大遗漏知识点
+
+### 运算符
+
+- 递增与递减
+
+  ++和--的位置决定了表达式返回i的原始值还是新值，前新后旧
+
+- 三目运算符
+
+  ```c
+  if (x == 1)
+  	return 2;
+  else
+  	return 3;
+  
+  return (x == 1) ? 2 : 3;	//这里上下等价
+  ```
+
+- 位运算
+
+  C语言可以用来编写底层代码，为此它提供了一组位运算符：
+
+  | 运算符 | 说明                 |
+  | :----: | -------------------- |
+  |   ~a   | a中所有位都取反      |
+  | a & b  | a中的位“与”b中的位   |
+  | a \| b | a中的位“或”b中的位   |
+  | a ^ b  | a中的位“异或”b中的位 |
+  |   <<   | 位左移（值增加）     |
+  |   >>   | 位右移（值减小）     |
+
+  <<运算符可以用来快速地将某个整型值乘以2的幂，但小心千万别溢出
+
+- 用逗号分割表达式
+  for循环在每次循环的末尾都会出现递增操作。
+  但如果你想在循环末尾执行多个运算怎么办？可以使用逗号运算符：
+  `for (i = 0; i < 10; i++, j++)` 递增i和j。
+  之所以要有逗号运算符是因为有时你不想用分号来分割表达式
+
+### 预处理指令
+
+
+
