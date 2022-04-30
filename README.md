@@ -517,7 +517,19 @@ return 0;
 
 ### 保留字
 
-懒得抄了
+|   1    |    2     |    3     |
+| :----: | :------: | :------: |
+|  auto  |    if    |  break   |
+|  int   |   case   |   long   |
+|  char  | register | continue |
+| return | default  |  short   |
+|   do   |  sizeof  |  double  |
+| static |   else   |  struct  |
+| entry  |  switch  |  extern  |
+| typeof |  float   |  union   |
+|  for   | unsigned |   goto   |
+| while  |   enum   |   void   |
+| const  |  signed  | volatile |
 
 ### 共享代码
 
