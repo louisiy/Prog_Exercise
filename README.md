@@ -716,11 +716,79 @@ snappy.teeth = 68;
 计算机通过把值赋给函数形参的方式向函数传值，所有赋值都会复制
 
 如果想让函数更新结构变量，就不能把结构作为参数传递，因为这样做仅仅是将数据的副本复制给
-了函数。取而代之，你可以传递结构的地址
+了函数。取而代之，可以传递结构的地址
 
 还有一种表示结构指针的方法，它更易于阅读。
 
 `(*t).age` 和 `t->age` 等价
 
-“指针->字段”等于“(*指针).字段”。
-“->”表示法省掉了括号，代码更易阅读。
+“指针->字段”等于“(*指针).字段”	“->”表示法省掉了括号，代码更易阅读。
+
+### 联合？
+
+每次创建结构实例，计算机都会在存储器中相继摆放字段
+
+联合则不同。当定义联合时，计算机只为其中一个字段分配空间，并且计算机会为其中最大的字段分配空间，然后由你决定里面保存什么值
+
+>计算机需要保证联合的大小固定。唯一的办法就是让它足够大，任何一个字段都能装得下
+
+```c
+typedef union {			//这里的关键字是union
+	short count;
+	float weight;
+	float volume;
+} quantity;
+```
+
+### 使用联合
+
+- C89 方式
+
+  把值赋给联合中第一个字段
+
+  ```c
+  quantity q = {4};
+  ```
+
+- 指定初始化器（designated initializer）
+
+  ```c
+  quantity q = { .weight = 1.5 };
+  ```
+
+- 点 表示法
+
+  在第一行创建变量，然后在第二行设置字段的值
+
+  ```c
+  quantity q;
+  q.volume = 3.7;
+  ```
+
+无论用哪种方法设置联合的值，都只会保存一条数据。联合只是提供了一种创建支持不同数据类型的变量的方法
+
+“指定初始化器”也可以用来设置结构字段的初值，并提高代码的可读性
+
+```c
+typedef struct {
+	const char *color;
+	int gears;
+	int height;
+} bike;
+
+bike b = {.height=17, .gears=21};
+```
+
+### 联合与结构
+
+```c
+typedef struct {
+    const char *name ;
+    const char *country;
+    quantity amount;
+} fruit_order;
+
+fruit_order apples = {"apples","English",.amount.weight = 4.2}
+printf("This order contains %2.2f lbs of %s\n",apples.amount.weight, apples.name);
+```
+
