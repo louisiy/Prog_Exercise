@@ -792,3 +792,13 @@ fruit_order apples = {"apples","English",.amount.weight = 4.2}
 printf("This order contains %2.2f lbs of %s\n",apples.amount.weight, apples.name);
 ```
 
+### 枚举变量保存符号 
+
+你需要某种方法记录我们在联合中保存了什么值。
+
+结构与联合用分号（;）来分割数据项，而枚举用逗号。
+
+```c
+enum colors {RED, GREEN, PUCE};		//可以用typedef为类型起个名字
+enum colors favorite = PUCE;
+```
