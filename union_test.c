@@ -14,6 +14,7 @@ typedef struct {
 margarita;
 
 int main () {
+
     margarita m = {2.0, 1.0, .citrus.lemon=2};
     // margarita m = {2.0, 1.0, {2}};
     printf
