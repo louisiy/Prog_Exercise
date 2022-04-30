@@ -802,3 +802,25 @@ printf("This order contains %2.2f lbs of %s\n",apples.amount.weight, apples.name
 enum colors {RED, GREEN, PUCE};		//可以用typedef为类型起个名字
 enum colors favorite = PUCE;
 ```
+
+***so? 枚举好处？？？***
+
+### 位字段（bitfield）
+
+C语言不支持二进制字面值，不过它支持十六进制字面值。每当C语言看到0x开头的数字，就认为它是以16为基数的数字（0x54）
+
+可以用位字段指定一个字段有多少位
+
+```c
+typedef struct {
+	unsigned int low_pass_vcf:1;		//位字段应当声明为unsigned int
+	unsigned int filter_coupler:1;		//表示该字段只使用1位存储空间
+	unsigned int reverb:1;
+	unsigned int sequential:4;
+	...
+} synth;
+```
+
+如果你有一连串的位字段，计算机会放在一起，以节省空间，也就是说如果有8个1位的位字段，计算机就会把它们保存在一个字节中
+
+如果编译器发现结构中只有一个位字段，还是会把它填充成一个字，这就是为什么位字段总是组合在一起
