@@ -616,11 +616,13 @@ launch: launch.o thruster.o
 
 -> [GUN Make Manual](http://tinyurl.com/yczmjx)
 
-## 5 结构、联合与位2字段
+## 5 结构、联合与位字段
 
 ### 结构 Struct
 
 结构化数据结构 structured data type
+
+结构是一种由一系列其他数据类型组成的数据类型。
 
 ```c
 struct fish {
@@ -700,3 +702,25 @@ typedef struct {
 } phone;
 phone p = {5557879, "s.png", 1.35};
 ```
+
+这样的结构称为匿名结构。
+
+### 更新结构
+
+```c
+fish snappy = {"Snappy", "piranha", 69, 4};
+printf("Hello %s\n", snappy.name);
+snappy.teeth = 68;
+```
+
+计算机通过把值赋给函数形参的方式向函数传值，所有赋值都会复制
+
+如果想让函数更新结构变量，就不能把结构作为参数传递，因为这样做仅仅是将数据的副本复制给
+了函数。取而代之，你可以传递结构的地址
+
+还有一种表示结构指针的方法，它更易于阅读。
+
+`(*t).age` 和 `t->age` 等价
+
+“指针->字段”等于“(*指针).字段”。
+“->”表示法省掉了括号，代码更易阅读。
