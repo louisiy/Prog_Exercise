@@ -217,7 +217,7 @@ if (strstr(s0, s1))
 ### 指针的数组
 
 ```c
-char *names_for_dog[] = {"Bowser", "Bonza", "Snodgrass"};	
+char *names_for_dog[] = {"Bowser", "Bonza", "Snodgrass"};
 //可以像访问数组的数组那样访问指针的数组,一个字符串字面值配一个指针
 ```
 
@@ -288,7 +288,7 @@ fprintf(stdout, "我喜欢乌龟！");
 //以上命令等价
 ```
 
-stdout 标准输出 
+stdout 标准输出
 
 stderr  标准错误
 
@@ -392,7 +392,7 @@ getop()使用范例
 ```c
 #include <unistd.h>
 ...
-while ((ch = getopt(argc, argv, "ae:")) != EOF) 
+while ((ch = getopt(argc, argv, "ae:")) != EOF)
 //ae:告诉getopt()函数“a和e是有效选项”，e后面的冒号表示“-e后面需要再跟一个参数”，getopt()会用optarg变量指向这个参数
 	switch(ch) {
 	...
@@ -801,7 +801,7 @@ fruit_order apples = {"apples","English",.amount.weight = 4.2}
 printf("This order contains %2.2f lbs of %s\n",apples.amount.weight, apples.name);
 ```
 
-### 枚举变量保存符号 
+### 枚举变量保存符号
 
 你需要某种方法记录我们在联合中保存了什么值。
 
@@ -812,7 +812,7 @@ enum colors {RED, GREEN, PUCE};		//可以用typedef为类型起个名字
 enum colors favorite = PUCE;
 ```
 
-***so? 枚举好处？？？*** 限制我能给的值？ 实例感受下： 
+***so? 枚举好处？？？*** 限制我能给的值？ 实例感受下：
 
 ```c
 typedef enum {
@@ -910,7 +910,7 @@ typedef struct {
   	return 2;
   else
   	return 3;
-  
+
   return (x == 1) ? 2 : 3;	//这里上下等价
   ```
 
@@ -939,4 +939,3 @@ typedef struct {
 
 
 
- 
