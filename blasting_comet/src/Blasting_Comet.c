@@ -9,15 +9,13 @@ int main(){
     printf("Let's blast the comets!\n");
     printf("Please enter your parament to configure your game.\n");
 
-    printf("mode:_/b");
+    printf("mode:_\b");
 
-    while(scanf("%d",&_mode) != EOF){
-
-        printf("Good to see you here.");
+    scanf("%d", &_mode);
+    if ( _mode == 0){
+        printf("Here is the standard mode. Glad to see you here. Let's start 3s later.");
     }
 
-
-
-    getchar();
+    system("pause");
     return 0;
 }
