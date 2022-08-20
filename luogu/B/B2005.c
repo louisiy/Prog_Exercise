@@ -2,9 +2,11 @@
 
 int main(){
     char a;
-    scanf("%1s",&a);
-    printf("%s\n",a);
-    printf("%s%s%s\n",a,a,a);
-    printf("%s%s%s%s%s\n",a,a,a,a,a);
+    scanf("%c",&a);
+    printf("  %c\n",a);
+    printf(" %c%c%c\n",a,a,a);
+    printf("%c%c%c%c%c\n",a,a,a,a,a);
     return 0;
 }
+
+//标准化输出还是要记住
