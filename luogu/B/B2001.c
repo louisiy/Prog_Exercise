@@ -1,9 +1,10 @@
 #include <stdio.h>
 int main(){
     long long a,b;
-    scanf("%d %d",&a,&b);
-    printf("%d",a+b);
+    scanf("%lld%lld",&a,&b);
+    printf("%lld",a+b);
     return 0;
 }
 
-// 问题在哪？
+
+//lld
