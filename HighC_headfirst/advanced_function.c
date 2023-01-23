@@ -35,7 +35,7 @@ void find(int(*match)(char*)){
     puts("Search results:");
     puts("----------------------");
     for(int i = 0; i < NUM_ADS; i++){
-        if(strstr(ADS[i],"sports")&& !strstr(ADS[i],"bieber")){
+        if(match(ADS[i])){
             printf("%s\n",ADS[i]);
         }
     }
@@ -48,6 +48,5 @@ int main(){
     find(sports_or_workout);
     find(ns_theater);
     find(arts_theater_or_dining);
-    getchar();
     return 0;
 }
