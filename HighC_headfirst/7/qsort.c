@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 int scores[] = {543,323,32,553,11,3,112};
 
 //升序
@@ -37,6 +39,8 @@ int compare_areas_desc(const void* a, const void* b){
     int area_b =(rb->width * rb->height);
     return area_b - area_a;
 }
+
+//按字母顺序排列名字，区分大小写
 
 int main(){
     qsort(scores,7,sizeof(int),compare_scores);
