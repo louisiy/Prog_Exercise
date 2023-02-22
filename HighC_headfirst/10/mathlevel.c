@@ -6,6 +6,8 @@
 #include <errno.h>
 #include <signal.h>
 
+#define _XOPEN_SOURCE
+
 int score = 0;
 
 void end_game(int sig){
